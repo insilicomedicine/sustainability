@@ -2,7 +2,7 @@
 
 # Check if the correct number of arguments is provided
 if [ "$#" -ne 4 ]; then
-    echo "Usage: $0 /path/to/input_cifs database_name [mofdiff|moftransformer|both] outputpath"
+    echo "Usage: $0 /path/to/input_cifs model_name [mofdiff|moftransformer|both] outputpath"
     exit 1
 fi
 

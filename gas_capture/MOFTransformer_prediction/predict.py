@@ -54,8 +54,7 @@ for prop in properties_list:
     with open(os.path.join(cif_files_dir, f"raw_{prop}.json"), "w") as f:
         json.dump(dummy_values, f)
         
-prepare_data(cif_files_dir, preprocessed_cifs_dir, downstream=properties_list,
-                test_fraction=1.0, train_fraction=0.0) 
+prepare_data(cif_files_dir, preprocessed_cifs_dir, downstream=properties_list, test_fraction=1.0, train_fraction=0.0) 
 
 for prop in properties_list:
     predict(
