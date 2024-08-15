@@ -26,6 +26,7 @@ if not cif_files_dir.exists():
 
 ### TODO: maybe change it
 model_dir_prefix = "logs_20k_"
+additional_properties = ["bandgap", "h2_uptake"]
 
 if os.path.exists(output_dir) and os.listdir(output_dir):
     response = input(f"The directory '{output_dir}' is not empty. Do you want to delete its contents? (y/n): ").lower()
@@ -46,6 +47,7 @@ else:
 
 models_list = [m for m in os.listdir(models_dir) if m.startswith(model_dir_prefix) and os.path.isdir(os.path.join(models_dir, m))]
 properties_list = [m.split(model_dir_prefix)[1] for m in models_list if m.startswith(model_dir_prefix)]
+properties_list.extend(additional_properties)
 cif_files = [f for f in os.listdir(cif_files_dir) if f.endswith(".cif")]
 
 dummy_values = {cif.split(".cif")[0]:0.0 for cif in cif_files}
@@ -57,15 +59,28 @@ for prop in properties_list:
 prepare_data(cif_files_dir, preprocessed_cifs_dir, downstream=properties_list, test_fraction=1.0, train_fraction=0.0) 
 
 for prop in properties_list:
-    predict(
-        # accelerator='cpu',
-        # devices=8,
-        root_dataset=preprocessed_cifs_dir,
-        load_path=os.path.join(models_dir, model_dir_prefix + prop, "pretrained_mof_seed0_from_pmtransformer/version_0/checkpoints/best.ckpt"),
-        downstream=prop,
-        split="test",  # or "all" if you want to predict on all data
-        save_dir=os.path.join(output_dir, prop),
-    )
+    if prop in additional_properties:
+        predict(
+            # accelerator='cpu',
+            # devices=8,
+            mean=0, # setting mean=0 and std=1 because the finetuned models were trained with these params
+            std=1,
+            root_dataset=preprocessed_cifs_dir,
+            load_path=os.path.join(models_dir, "bandgap_and_h2_uptake", f"finetuned_{prop}.ckpt"),
+            downstream=prop,
+            split="test",  # or "all" if you want to predict on all data
+            save_dir=os.path.join(output_dir, prop),
+        )
+    else:
+        predict(
+            # accelerator='cpu',
+            # devices=8,
+            root_dataset=preprocessed_cifs_dir,
+            load_path=os.path.join(models_dir, model_dir_prefix + prop, "pretrained_mof_seed0_from_pmtransformer/version_0/checkpoints/best.ckpt"),
+            downstream=prop,
+            split="test",  # or "all" if you want to predict on all data
+            save_dir=os.path.join(output_dir, prop),
+        )
     
 # Cleaning up intermediary files and dirs
 json_files_input_dir = [f for f in os.listdir(cif_files_dir) if f.endswith(".json")]

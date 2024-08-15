@@ -11,7 +11,9 @@ naming_dictionary = {
     "heat_adsorption_CO2_P0.15bar_T298K_": "heat_adsorption_CO2_P0.15bar_T298K [kcal/mol]",
     "heat_adsorption_N2_binary_P0.85bar_T298K_": "heat_adsorption_N2_binary_P0.85bar_T298K [kcal/mol]",
     "N2_binary_uptake_P0.85bar_T298K_": "N2_binary_uptake_P0.85bar_T298K [mmol/g]",
-    "working_capacity_vacuum_swing_": "working_capacity_vacuum_swing [mmol/g]"
+    "working_capacity_vacuum_swing_": "working_capacity_vacuum_swing [mmol/g]",
+    "bandgap": "Bandgap",
+    "h2_uptake": "H2 uptake [mmol/g]"
 }
 
 parser = argparse.ArgumentParser()

@@ -28,7 +28,7 @@ docker pull akhmedins/benchmark_raspa2_sim:latest
 
 5. Download and extract the model checkpoints for MOFTransformer:
 ```bash
-wget https://zenodo.org/records/13197825/files/models.tar.gz
+wget https://zenodo.org/records/13310792/files/models.tar.gz
 tar -zxvf models.tar.gz
 ```
 

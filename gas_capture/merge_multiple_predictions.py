@@ -50,6 +50,15 @@ for df, model in zip([csv_moftr, csv_sim], models):
             if prop in df.columns:
                 result_df.loc[df['CIF'], (prop, model)] = df.set_index('CIF')[prop]
 
+# Drop subcolumns with all NaN values
+columns_to_drop = []
+for prop in all_properties:
+    for model in models:
+        if result_df[prop][model].isna().all():
+            columns_to_drop.append((prop, model))
+
+result_df = result_df.drop(columns=columns_to_drop)
+
 # Reset index and rename the index column to 'CIF'
 result_df = result_df.reset_index().rename(columns={'index': 'CIF'})
 
