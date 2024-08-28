@@ -285,13 +285,23 @@ The table will include predictions from both MOFDiff simulation and MOFTransform
 
 The below table shows the evaluation of 8 sets of generated MOFs by the MOFDiff model. Generations targeted each of the 8 evaluated properties, with the target set to `15.0`.
 
-[CIF_BENCHMARK_TABLE](benchmark.csv)
+[BENCHMARK_TABLE_CO2](tables_md/c02_benchmark.md) \
+[BENCHMARK_TABLE_H2](tables_md/h2_benchmark.md)
 
 ## MODEL Benchmark Table
 
 The table below presents a comparison of current models, showcasing their maximum performance for each evaluated property. This benchmark highlights the peak capabilities of different models across various metrics.
 
-[MODEL_BENCHMARK_TABLE](benchmark_max.csv)
+[MODEL_BENCHMARK_TABLE_CO2](tables_md/c02_max_table.md) \
+[MODEL_BENCHMARK_TABLE_H2](tables_md/h2_max_table.md)
+
+## Table updating
+#### To update tables, use current `.csv` files.
+1. [CIF CO2 benchmark table](tables_csv/c02_table_sorted.csv)
+2. [CIF H2 benchmark table](tables_csv/h2_table_sorted.csv)
+3. [MODEL CO2 benchmark table](tables_csv/c02_max_sorted.csv)
+4. [MODEL CO2 benchmark table](tables_csv/h2_max_sorted.csv)
+
 
 ## Troubleshooting
 If you encounter any issues, please check the individual README files in the MOFDiff_simulation/ and MOFTransformer_prediction/ directories for more detailed instructions and troubleshooting tips.
