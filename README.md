@@ -30,7 +30,7 @@ The consortium aims to achieve the following objectives:
 This repository contains benchmarking tools, datasets, and documentation related to our sustainability efforts in the following areas:
 
 - [x] CO2 Capture
-- [ ] Hydrogen Storage
+- [x] Hydrogen Storage
 - [ ] Agrochemistry
 - [ ] Base Oils & Lubricants
 
