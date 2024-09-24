@@ -27,7 +27,7 @@ This guide outlines the procedure for predicting gas absorption properties of me
 4. Download and extract the model checkpoints:
 
    ```bash
-   wget https://zenodo.org/records/13197825/files/models.tar.gz
+   wget https://zenodo.org/records/13815098/files/models.tar.gz
    tar -zxvf models.tar.gz
    ```
 

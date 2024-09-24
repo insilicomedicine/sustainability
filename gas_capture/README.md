@@ -28,7 +28,7 @@ docker pull akhmedins/benchmark_raspa2_sim:latest
 
 5. Download and extract the model checkpoints for MOFTransformer:
 ```bash
-wget https://zenodo.org/records/13310792/files/models.tar.gz
+wget https://zenodo.org/records/13815098/files/models.tar.gz
 tar -zxvf models.tar.gz
 ```
 
@@ -66,6 +66,8 @@ The output CSV file (specified as the last argument in the command) will contain
 - Heat of adsorption for CO₂ at 0.10 bar and 363 K (kcal/mol)
 - N₂ uptake in binary mixture at 0.85 bar and 298 K (mmol/g)
 - Heat of adsorption for N₂ in binary mixture at 0.85 bar and 298 K (kcal/mol)
+- H2 uptake [mmol/g]
+- Bandgap
 
 The table will include predictions from both MOFDiff simulation and MOFTransformer.
 
@@ -300,7 +302,7 @@ The table below presents a comparison of current models, showcasing their maximu
 1. [CIF CO2 benchmark table](tables_csv/c02_table_sorted.csv)
 2. [CIF H2 benchmark table](tables_csv/h2_table_sorted.csv)
 3. [MODEL CO2 benchmark table](tables_csv/c02_max_sorted.csv)
-4. [MODEL CO2 benchmark table](tables_csv/h2_max_sorted.csv)
+4. [MODEL H2 benchmark table](tables_csv/h2_max_sorted.csv)
 
 
 ## Troubleshooting
