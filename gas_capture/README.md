@@ -10,36 +10,53 @@ This project combines the MOFDiff simulation and MOFTransformer prediction tools
 
 ## Setup
 
-1. Clone this repository and navigate to the project root.
+1. Clone this repository and navigate to the project's root directory.
 
 2. Ensure you have a folder containing only the `.cif` files you want to evaluate.
 
 3. Install the required Python packages:
+
+Before insalling the packages, please downgrade `pip` to version `24.0` while in a Python 3.10 environment:
+
+```bash
+pip install pip==24.0
+```
+
+Then proceed with installing the required packages:
 
 ```bash
 cd MOFTransformer_prediction/
 pip install -r requirements.txt
 ```
 
-4. Pull the Docker image for MOFDiff simulation:
-```bash
-docker pull akhmedins/benchmark_raspa2_sim:latest
-```
-
-5. Download and extract the model checkpoints for MOFTransformer:
+4. Download and extract the model checkpoints for MOFTransformer:
 ```bash
 wget https://zenodo.org/records/13815098/files/models.tar.gz
 tar -zxvf models.tar.gz
 ```
 
+5. Pull the Docker image for MOFDiff simulation:
+```bash
+cd ../MOFDiff_simulation/
+docker pull akhmedins/benchmark_raspa2_sim:latest
+```
+
+6. Build a local Docker image that runs a simulation script upon running the container:
+
+```bash
+docker build -t raspa2_sim_build .
+```
+
 ## Usage
 
-1. Place your .cif files in a folder (e.g., input_cifs/).
+1. Place your .cif files in a folder (e.g., `cif_sample_input/`).
 
 2. Run the end-to-end pipeline:
 ```bash
 cd ..
-./run_pipeline_with_modes.sh /path/to/input_cifs model_name [mofdiff|moftransformer|both] output_file_name.csv
+chmod +x run_pipe_with_modes.sh
+
+./run_pipe_with_modes.sh /path/to/input_cifs model_name [mofdiff|moftransformer|both] output_file_name.csv
 ```
 Where:
 
